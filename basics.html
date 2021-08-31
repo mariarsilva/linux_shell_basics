@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Resumo do livro Linux Command Line and Shell Scripting Bible</title>
+</head>
+<body>
+  <h1>Resumo do livro Linux Command Line and Shell Scripting Bible</h1>
+  <h1><font color="red">Parte 1: The Linux Command Line</font></h1>
+  <h1>Chapter 1: Starting with Linux Shells</h1>
+  <h2>O que é linux?</h2> 
+  <p>O linux é composto por 4 partes principais: o kernel, os utilitários GNU, um ambiente gráfico e aplicações.</p>
+  <ul>
+  <li>Linux Kernel: centro do sistema linux. Controla todos os softwares e hardwares do sistema, alocando memória quando necessário e executando softwares quando solicitado. Responsável por 4 funções principais:</li>
+  <ol>
+    <li>Gestão de memória do sistema: administra a memória física disponível e também cria e administra as memórias virtuais. O kernel administra essas memórias virtuais usando um espaço no disco rígido chamado swap space, onde o kernel troca os conteudos do local da memória virtual do espaço do swap para a memória física, fazendo com que o sistema 'pense' que há mais memória disponível do que realmente tem. Os locais de memória ficam em blocos chamados 'pages', e o kernel localiza tanto a memória física quanto a 'swap', e mantem uma tabela que indica cada uma delas.O kernel também analisa as páginas em uso e copia as não acessadas por um tempo na memória 'swap'..</li>
+    <li>Gerenciamento de software: chama os programas em execução de 'processos', que podem operar em 1º plano (mostra valores de saída na tela) ou em 2º plano. O kernel administra todos esses processos, além de criar o primeiro (init process), que inicia todos os outros. Em alguns sistemas linux possuem uma tabela de processos que iniciam automaticamente ao iniciar, localizado em /etc/inittabs; noutros (ex: no meu Ubuntu 21.04 -rs) é usado o diretório /etc/init.d para abrigar scripts que iniciam e param aplicações no tempo de boot. Seu init system usa níveis de inicialização (run levels)</li>
+    <ol>
+      <li>Nível 1: inicia processos básicos e um terminal (single user mode). Usado em manutenções de emergência.</li>
+      <li>Nível 3: console-based, inicia a maioria das aplicações, como a de rede. </li>
+      <li>Nível 5: com interface gráfica</li>
+    </ol>
+    <li>Gerenciamento de hardware: todo dispositivo que se comunica com o sistema Linux possui um 'driver code' no kernel, que será um intermediário desses dados. Esse código pode ser compilado no kernel ou tem seus módulos adicionados ao kernel. Linux cria arquivos especiais (nodes) para cada dispositivo e toda comunicação com ele é feita através desse node. Linux identifica os hardware como 'device files', que podem ser:</li>
+    <ul>
+      <li>Character device files: lidam com um caractere por vez (ex: modems e terminais). </li>
+      <li>Block d. f.: lida com dados maiores (ex: HDs).</li>
+      <li>Network file types: usado por dispositivos que enviam e recebem pacotes. Ex: rede e loopback device.</li>
+    </ul>
+    <li>Gerenciamento de filesystem: aceita diversos tipos de filesystems e pode ler e escrever neles, inclusive no do Windows. Exs: ext, hpfs, vfat, ntfs, smb, ncp, etc.</li>
+  </ol>
+  <li>Utilitários GNU: mesmo com o kernel o Linux precisa de utilitarios para rodar as funções padrão, controlar arquivos e programas. São open source e baseados em UNIX. Seu cerne está no pacote 'coreutils', que podem ser utilitários para lidar com arquivos, textos ou processos, onde cada um deles irá possuir diversos programas.</li>
+  <ul> 
+    <li>Shell: utilitário interativo que provem um meio do usuário iniciar programas, lidar com arquivos do filesystem. Está no prompt de comando, que é a parte interativa do shell. Você pode agrupar comandos shell em arquivos e executá-los como um programa no 'shell scripts'. O shell padrão do Linux é o bash shell; outros são o ash, korn, tcsh, zsh.</li>
+  </ul>
+  </ul>
+  
+  <h3>O ambiente Linux Desktop</h3>
+  <p>Vejamos aqui as principais interfaces gráficas:</p>
+  <ul>
+    <li>X Windows System: programa de baixo nível que trabalha diretamente com o monitor e a placa de vídeo e controla como as aplicações serão apresentadas graficamente. Algumas são a X.org, Fedora Linux, Ubuntu Linux, etc.</li>
+    <li>KDE Desktop: projeto open source que produz desktop similar ao do ambiente Windows.</li>
+    <li>GNOME Desktop: um dos ambiente mais populares com muitas funções inspiradas no Windows. </li>
+    <li>Unity Desktop: presente no Ubuntu</li>
+  </ul>
+
+  <h2>Distribuições Linux</h2>
+  <p>É um pacote de sistemas Linux completo, muitas vezes customizada. Se dividem em 3 categorias:</p>
+  <ul>
+    <li>Full core: possui kernel, ambientes gráficos e todas as aplicações Linux disponíveis, precompiladas pelo kernel. Exs: Slackware, Red Hat, Fedora, Gentoo, openSUSE, Debian.</li>
+    <li>Specialized: possuem apenas um conjunto de aplicações para uma área específica. Exs: CentOS, Ubuntu, Mint, Puppy Linux, dyne:bolic, PCLinuxOS</li>
+    <li>LiveCD: permitem ver o sistema Linux sem instalá-lo; cria um cd 'bootável' que possui uma amostra do sistema. Exs: Knoppix, PCLinuxOS, Ubuntu, Slax, Puppy Linux, etc.</li>    
+  </ul>
+
+  <h1>Chapter 2: Getting to the Shell</h1>
+  <h2>Alcançando a linha de comando</h2>
+  <p>Antes das interfaces gráficas, a interação com o sistema era feito pelo CLI (command line interface) do shell. Atualmente existem diversas CLIs:</p>
+  <ul>
+    <li>Console Terminals: fora do modo gráfico. Pode ser acessado apenas com teclado e monitor conectados à CPU.</li>
+    <li>Terminais gráficos: simula um terminal antigo, dentro do ambiente gráfico (possui janela, menu, etc.)</li>
+  </ul>
+  <h3>Acessando a CLI pelo terminal Linux</h3>
+  <p>Na maioria das distribuições Linux pode ser acessado e alternado entre a interface gráfica usando: ctrl+alt+F1 a F7</p>
+  <p>OBS: ao acessar o CLI na primeira linha terá algo como 'tty2', 'tty3, etc.; o número indica o número do virtual console. Ex: tty3 significa que o Teletypewriter está no virtual console 3.</p>
+  <p>OBS 2: no virtual console não é possível executar programas gráficos.</p>
+  <p>OBS 3: você pode mudar a cor do terminal com o comando 'setterm -inversescreen on' e retornar com 'setterm -inversescreen off'.</p>
+  <h3>Acessando a CLI pelo terminal gráfico</h3>
+  <p>Permitem que se acesse a CLI sem sair da interface gráfica. Exemplos: Eterm, Final Term, GNOME Terminal, Guake, LillyTerm, mrxvt, rxvt, st, Sakura, tilda, Xfce4 Terminal, xterm, etc.</p>
+  
+  <h2>Usando o GNOME Terminal Emulator</h2>
+  <p>Na maioria das distribuições Linux pode ser acessada usando o atalho ctrl+alt+T. Alguns atalhos: para abrir um novo terminal, digite shift+ctrl+n; para abrir uma nova aba, digite shift+ctrl+T; para fechar aba, shift+ctrl+W; para fechar toda a janela, shift+ctrl+Q.</p>
+  <p>Outros atalhos importantes: pesquisar (shift+ctrl+F), tamanho padrão (ctrl+0)</p>
+  <p>Não botei os outros pq preguiça -rs tudo aquilo da pra ver no youtube kkkkkkk</p>
+
+  <h1>Chapter 3: Basic bash Shell Commands</h1> 
+
+</body>
+</html>
