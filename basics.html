@@ -72,6 +72,45 @@
   <p>Não botei os outros pq preguiça -rs tudo aquilo da pra ver no youtube kkkkkkk</p>
 
   <h1>Chapter 3: Basic bash Shell Commands</h1> 
-
+  <h2>Iniciando o Shell</h2>
+  <p>/etc/passwd possui a lista de todas as contas do sistema com informações básicas de casa, vejamos o exemplo:</p>
+  <ul>
+    <li>christine:x:501:501:Christine Bresnahan:/home/christine:/bin/bash</li>
+  </ul>
+  <p>Prestemos atenção no fim: '/bin/bash'. É o programa shell padrão daquele arquivo, significa que assim que christine loga no sistema o shell bash é automaticamente iniciado. Se o ambiente é uma interface CLI, o comando automaticamente inicia com ele; se é um ambiente gráfico, é preciso iniciar o terminal para acessar o CLI.</p>
+  <h2>Usando o prompt Shell</h2>
+  <p>Abrindo o terminal estamos aptos a inserir comandos shell. O sinal '$' indica que o shell aguarda a inserção de texto</p>
+  <h2>Interagindo com manuais bash</h2>
+  <p>A maioria das distribuições Linux possuem manuais. O comando 'man' acessa manuais armazenados no seu sistema Linux. Ex: 'man docker', 'man ansible', 'man man' (o manual do manual -rs),´ etc.</p>
+  <p>OBS: não achou o manual que queria? Digite 'man -k PALAVRA-CHAVE' para procurá-la. Ex: man -k ansible</p>
+  <p>Um manual pode ter uma dessas seções (não necessariamente todas)</p>
+  <img src="man.png">
+  <p>OBS 2: você pode ver em qual seção está o manual vendo-o através do comando a primeira linha do manual aberto. No exemplo abaixo, o manual só possui a seção 1, como mostrado do print.</p>
+  <img src="ans.png">
+  <p>'man' não são as únicas páginas de refeência. podendo existir páginas chamadas com 'info' ou '-help/--help'.</p>
+  <h2>Navegando no sistema de arquivos (filesystem)</h2>
+  <p>Linux não usa letras para designar o caminho dos seus drives, como no Windows temos o C:/, D:/, etc. O Linux armazena os arquivos numa única estratura de diretórios, chamada 'virtual directory', que possui um diretório base chamado 'root'.</p>
+  <p>A estrutura do filesystem vem da estrutura de arquivos UNIX. Os nomes dos diretórios são baseados no Filesystem Hierarchy Standard (FHS). Abaixo veja os diretórios mais comuns:</p>
+  <img src="fstm1.png">
+  <img src="fstm2.png">
+  <p>Quando se inicia o sistema CLI, a sessão inicia no diretório 'home'. Você pode se mover entre diretórios usando o comando 'cd'.</p>
+  <h3>Atravessando diretórios</h3>
+  <p>Mova-se pelos diretórios digitando 'cd DESTINO', DESTINO = nome do diretório que se deseja acessar. O parâmetro DESTINO pode ser expressado de duas formas:</p>
+  <ul>
+    <li>Usando referências absolutas: define o local exato onde está o diretório, a partir do root (/). Ex: maria@maria-pc:~$ cd /usr/bin. </li>
+    <p>OBS: '~' significa que o shell está no diretório home. Ex: maria@maria-pc:~$</p>
+    <p>OBS 2: o comando 'pwd' mostra o diretório atual da sessão shell. Inclusive é uma boa prática usar o comando antes de executar qualquer outro comando no diretório para checar se a mudança de diretório foi realmente alterado.</p>
+    <li>Usando referências relativas: você especifica apenas o nome do diretório vizinho ao diretório atual da sua sessão shell. Por exemplo, se você está no diretório 'home' e deseja acessar um dos diretórios vizinhos (ex: Documentos), você só precisa inserir no terminal: 'cd Documentos'</li>
+  </ul>
+  <h2>Listando arquivos e diretórios</h2>
+  <p>Para ver os arquivos e diretórios disponíveis no diretório que está no momento, é só usar o comando 'ls'. Caso não mostra diferenciação de cores, digite 'ls -F'. Para mostrar também os arquivos ocultos, digite 'ls -a'. Para mostrar os diretórios e os subdiretórios das pastas vizinhas, digite 'ls -R'. Para ver informações adicionais dos arquivos/diretórios, digite 'ls -l'.</p>
+  <p>Para ver o manual do ls: man ls</p>
+  <p>O comando 'ls' serve também para filtrar buscas de determinadas informações. Ex: 'ls -l ansible' irá mostrar os resultados relacionados ao termo 'ansible'. Se você não sabe a palavra completa, pode com (?) ou (*). Ex: 'ls -l ansibl?' irá retornar valores e onde tem a interrogação o sistema de busca irá tentar completar; se digitarmos 'ls -l ans*' ele irá procurar todos os termos que possam se encaixar com esse parâmetro.</p>
+  <h3>Lidando com arquivos</h3>
+  <ul>
+    <li>Criando arquivos: o comando 'touch' cria um novo arquivo.Exemplo: 'touch arquivo_vazio'</li>
+    <li>Copiando arquivos: o comando 'cp FONTE DESTINO' para copiar arquivos de um local (FONTE) para outro (DESTINO). Se o arquivo DESTINO já existe com esse nome você não será avisado, exceto que faça 'cp -i FONTE DESTINO'.</li>
+  </ul>
+  <p></p>
 </body>
 </html>
