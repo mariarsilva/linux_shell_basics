@@ -109,8 +109,32 @@
   <h3>Lidando com arquivos</h3>
   <ul>
     <li>Criando arquivos: o comando 'touch' cria um novo arquivo.Exemplo: 'touch arquivo_vazio'</li>
-    <li>Copiando arquivos: o comando 'cp FONTE DESTINO' para copiar arquivos de um local (FONTE) para outro (DESTINO). Se o arquivo DESTINO já existe com esse nome você não será avisado, exceto que faça 'cp -i FONTE DESTINO'.</li>
+    <li>Copiando arquivos: o comando 'cp FONTE DESTINO' para copiar arquivos de um local (FONTE) para outro (DESTINO). Se o arquivo DESTINO já existe com esse nome você não será avisado, exceto que faça 'cp -i FONTE DESTINO'. Veja no exemplo da imagem abaixo:</li>
+    <img src="cpy.png">
+    <p>É possível copiar o arquivo também para outro diretório. Veja o exemplo: </p>
+    <img src="cpy2.png">
+    <p>DICA: para facilitar a copia de um arquivo fora da pasta atual, você pode inserir no final um ponto (.), que simboliza o diretório atual que você está. Veja o exemplo abaixo:</p>
+    <img src="cpy3.png">
+    <p>Pode-se usar o parâmetro '-R' para copiar todos os arquivos de um diretório. Veja o exemplo:</p>
+    <img src="cpy4.png">
   </ul>
-  <p></p>
+  <h3>Ligando (linking) arquivos</h3>
+  <p>Útil para quando você precisa de várias cópias do mesmo arquivo no sistema. Ao invés de criar cópias físicas, usamos uma única cópia e multiplicamos em cópias virtuais (links). Os links podem ser simbólicos ou rígidos (hard link).</p>
+  <ul>
+    <li>Link simbólico: é um arquivo físico que aponta para outro na estrutura do diretório virtual. Os dois arquivos ligados simbolicamente não compartilham os mesmos conteúdos. Para criar o link simbólico, o arquivo original precisa existir. Veja como criar:</li>
+    <img src="lsimb.png">
+    <p>O arquivo linkado possui um ícone distinto, como pode ser visto abaixo:</p>
+    <img src="lsimb2.png">
+    <li>Link rígido (hard link): cria um arquivo virtal separado que contem informações sobre o arquivo original e onde localizá-lo. Porém eles são fisicamente o mesmo arquivo. Veja abaixo:</li>
+    <img src="lhard1.png">
+    <p>O arquivo 'ozu' possui as mesmas características do arquivo original, como pode ser visto abaixo:</p>
+    <img src="lhard2.png">
+  </ul>
+  <h3>Renomeando Arquivos</h3>
+  <p>Esse processo é chamado de 'moving files', que possui o comando 'mv'. Exemplo:</p>
+  <img src="mv1.png">
+  <p>É possível usar 'mv' para mover arquivos. Exemplo</p>
+  <img src="mv2.png">
+  <p>IMPORTANTE: para ver o manual do comando digite 'man mv'</p>
 </body>
 </html>
